@@ -9,7 +9,6 @@ import { HomeComponent } from './views/home/home.component';
 import { AboutComponent } from './views/about/about.component';
 
 import { ProjectService } from './services/project.service';
-import { SignUpDirective } from './components/projects/sign-up.directive';
 import { SignUpComponent } from './components/projects/sign-up/sign-up.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { SignUpComponent } from './components/projects/sign-up/sign-up.component
     AppComponent,
     HomeComponent,
     AboutComponent,
-    SignUpDirective,
     SignUpComponent
   ],
   imports: [
