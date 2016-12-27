@@ -1,5 +1,5 @@
 <p *ngFor="let project of projects">
-    {{project.id}} {{project.name}} {{project.description}}
+    {{project.id}} {{project.name}}: {{project.description}}
 </p>
 
 <project-sign-up [formActive]="true" [projects]="projects"></project-sign-up>

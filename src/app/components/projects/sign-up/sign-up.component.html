@@ -1,4 +1,6 @@
-<form *ngIf="formActive" #projectForm="ngForm" (ngSubmit)="formSubmitted = true;">
+<form *ngIf="formActive" #projectForm="ngForm">
+
+	<label for="name">Nombre del proyecto: </label>
 	<input type="text" name="name"
 	required 
 	minlength="2" 
@@ -9,7 +11,9 @@
 	<div *ngIf="formErrors.name" class="alert alert-danger">
       {{ formErrors.name }}
 	</div>
+	<br>
 
+	<label for="description">Descripción del proyecto: </label>
 	<input type="text" name="description"
 	required 
 	minlength="2" 
@@ -20,7 +24,7 @@
 	<div *ngIf="formErrors.description" class="alert alert-danger">
       {{ formErrors.description }}
 	</div>
-
-	<h3 [hidden]="!projectForm.form.valid">Valido</h3>
+	<br>
+	<h3 class="success" [hidden]="!projectForm.form.valid">Formulario Correcto!</h3>
 	<button type="submit" (click)="saveProject()">Guardar</button>
 </form>

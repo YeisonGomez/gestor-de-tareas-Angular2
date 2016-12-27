@@ -13,9 +13,6 @@ export class SignUpComponent implements OnInit {
 	@Input() formActive: boolean;
 	@Input() projects: ProjectObject[];
 	newProject: ProjectObject;
-	formSubmitted: boolean;
-	projectForm: NgForm;
-	@ViewChild('projectForm') currentForm: NgForm;
 
 	constructor(private projectService: ProjectService) { 
 		this.newProject = new ProjectObject();
@@ -29,18 +26,24 @@ export class SignUpComponent implements OnInit {
 	}
 
 	saveProject(): void{
-		if(this.formSubmitted){
+		if(this.projectForm.valid){
 			this.newProject.id = this.projects[this.projects.length - 1].id + 1;
 			this.projectService.saveProject(this.newProject).then(data => {
-				if(data)
+				if(data){
 					this.newProject = new ProjectObject();
-				else
+					this.projectForm.onReset();
+				}else{
 					console.log("No se puedo guardar");
+				}
 			});
 		}else{
 			console.log("Valide el formulario de registro");
 		}
 	}
+
+	//Validar formulario
+	projectForm: NgForm;
+	@ViewChild('projectForm') currentForm: NgForm;
 
 	formChanged() {
 	  if (this.currentForm === this.projectForm) { return; }
@@ -58,11 +61,10 @@ export class SignUpComponent implements OnInit {
 	  for (const field in this.formErrors) {
 	    this.formErrors[field] = '';
 	    const control = form.get(field);
-
 	    if (control && control.dirty && !control.valid) {
 	      const messages = this.validationMessages[field];
 	      for (const key in control.errors) {
-	        this.formErrors[field] += messages[key] + ' ';
+	      	if(messages[key] != undefined) { this.formErrors[field] += messages[key] + ' '; }
 	      }
 	    }
 	  }
@@ -81,7 +83,8 @@ export class SignUpComponent implements OnInit {
 	    'forbiddenName': 'Someone named "Bob" cannot be a hero.'
 	  },
 	  'description': {
-	    'required': 'La descripción es necesaria.'
+	    'required': 'La descripción es necesaria.',
+
 	  }
 	};
 }
