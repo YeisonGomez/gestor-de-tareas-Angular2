@@ -83,8 +83,7 @@ export class SignUpComponent implements OnInit {
 	    'forbiddenName': 'Someone named "Bob" cannot be a hero.'
 	  },
 	  'description': {
-	    'required': 'La descripción es necesaria.',
-
+	    'required': 'La descripción es necesaria.'
 	  }
 	};
 }

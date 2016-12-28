@@ -1,0 +1,15 @@
+<p>
+  task works!
+</p>
+
+<div *ngIf="tasks">
+	<template ngFor let-item [ngForOf]="tasks" let-i="index">
+	  <li>{{item.name}}</li>
+	</template>	
+</div>
+
+<div *ngIf="tasks == ''">
+	<h2>El proyecto no tiene tareas asignadas</h2>
+</div>
+
+

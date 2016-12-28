@@ -9,14 +9,17 @@ import { HomeComponent } from './views/home/home.component';
 import { AboutComponent } from './views/about/about.component';
 
 import { ProjectService } from './services/project.service';
+import { TaskService } from './services/task.service';
 import { SignUpComponent } from './components/projects/sign-up/sign-up.component';
+import { TaskComponent } from './views/task/task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    SignUpComponent
+    SignUpComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { SignUpComponent } from './components/projects/sign-up/sign-up.component
     AppRoutingModule
   ],
   providers: [
-    ProjectService
+    ProjectService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })
